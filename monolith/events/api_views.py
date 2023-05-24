@@ -9,7 +9,7 @@ from .models import Conference, Location, State
 
 class LocationListEncoder(ModelEncoder):
     model = Location
-    properties = ["name"]
+    properties = ["name", "picture_url"]
 
 
 class LocationDetailEncoder(ModelEncoder):
@@ -20,7 +20,6 @@ class LocationDetailEncoder(ModelEncoder):
         "room_count",
         "created",
         "updated",
-        "picture_url",
     ]
 
     def get_extra_data(self, o):
@@ -29,7 +28,7 @@ class LocationDetailEncoder(ModelEncoder):
 
 class ConferenceListEncoder(ModelEncoder):
     model = Conference
-    properties = ["name"]
+    properties = ["name",]
 
 
 class ConferenceDetailEncoder(ModelEncoder):
