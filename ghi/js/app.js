@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         if (!response.ok) {
         // Figure out what to do when the response is bad
+        throw new Error('Error fetching conference data')
         } else {
         const data = await response.json();
 
@@ -49,8 +50,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
 
         }
-    } catch (e) {
-      // Figure out what to do if an error is raised
+    } catch (error) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('alert', 'alert-danger');
+        errorMessage.textContent = 'error occurred while fetching conference details.';
+        document.body.insertBefore(errorMessage, document.body.firstChild);
     }
 
 });
