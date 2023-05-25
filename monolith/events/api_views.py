@@ -1,5 +1,5 @@
-from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
+from django.http import JsonResponse # type:ignore
+from django.views.decorators.http import require_http_methods   # type:ignore
 import json
 
 from common.json import ModelEncoder
@@ -9,7 +9,7 @@ from .models import Conference, Location, State
 
 class LocationListEncoder(ModelEncoder):
     model = Location
-    properties = ["name", "picture_url"]
+    properties = ["id", "name", "picture_url"]
 
 
 class LocationDetailEncoder(ModelEncoder):

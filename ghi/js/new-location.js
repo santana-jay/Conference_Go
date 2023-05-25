@@ -47,15 +47,15 @@ window.addEventListener('DOMContentLoaded', async  () => {
             }
         }
 
-    try{
-        const response = await fetch(locationUrl, fetchConfig)
-        if (response.ok) {
-            formTag.reset();
-            const newLocation = await response.json();
+        try{
+            const response = await fetch(locationUrl, fetchConfig)
+            if (response.ok) {
+                formTag.reset();
+                const newLocation = await response.json();
+            }
+        }catch(e){
+            console.log(e)
         }
-    }catch(e){
-        console.log(e)
-    }
     })
 
 })
