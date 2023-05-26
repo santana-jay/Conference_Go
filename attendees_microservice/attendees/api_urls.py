@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path # type: ignore
 
 from .api_views import api_list_attendees, api_show_attendee
 
