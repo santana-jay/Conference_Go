@@ -22,7 +22,7 @@ function App(props) {
               <td>{ attendee.conference }</td>
             </tr>
           } */}
-          {props.attendees.map(attendee => {
+          {props.attendees.map((attendee) => {
             return (
               <tr key={attendee.href}>
                 <td>{ attendee.name }</td>
