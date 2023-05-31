@@ -1,7 +1,8 @@
-// Get the cookie out of the cookie store
-const payloadCookie = cookieStore.get('jwt_access_payload')// FINISH THIS
+async function checkStatus () {
+  // Get the cookie out of the cookie store
+const payloadCookie = await cookieStore.get('jwt_access_payload')// FINISH THIS
 console.log('payloadcookie:',payloadCookie)
-if (payloadCookie && payloadCookie.value) {
+if (payloadCookie) {
   try{
     // The cookie value is a JSON-formatted string, so parse it
     const encodedPayload = JSON.parse(payloadCookie.value);
@@ -19,17 +20,19 @@ if (payloadCookie && payloadCookie.value) {
 
     // Check if "events.add_conference" is in the permissions.
     // If it is, remove 'd-none' from the link
-    if(payload.permissions.includes('events.add_conference')){
+    if(payload.user.perms.includes('events.add_conference')){
       document.getElementById('addConferenceLink').classList.remove('d-none')
     }
 
 
     // Check if "events.add_location" is in the permissions.
     // If it is, remove 'd-none' from the link
-    if(payload.permissions.includes('events.add_location')){
+    if(payload.user.perms.includes('events.add_location')){
       document.getElementById('addLocationLink').classList.remove('d-none')
     }
   }catch(e){
     console.error('Error parsing payload')
   }
 }
+}
+checkStatus()
