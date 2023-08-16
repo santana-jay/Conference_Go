@@ -26,3 +26,28 @@ export default function AttendeesList(props) {
 
     )
 }
+
+{filteredAppointments.length > 0
+    ? filteredAppointments.map((appointment) => (
+        <tr key={appointment.id}>
+            <td>{appointment.vin}</td>
+            <td>{appointment.is_vip ? 'Yes' : 'No'}</td>
+            <td>{appointment.customer}</td>
+            <td>{appointment.date}</td>
+            <td>{appointment.time}</td>
+            <td>{`${appointment.technician.first_name} ${appointment.technician.last_name}`}</td>
+            <td>{appointment.reason}</td>
+            <td>{appointment.status}</td>
+        </tr>
+    ))
+    : appointments.map((appointment) => (
+        <tr key={appointment.id}>
+            <td>{appointment.vin}</td>
+            <td>{appointment.is_vip ? 'Yes' : 'No'}</td>
+            <td>{appointment.date}</td>
+            <td>{appointment.time}</td>
+            <td>{`${appointment.technician.first_name} ${appointment.technician.last_name}`}</td>
+            <td>{appointment.reason}</td>
+            <td>{appointment.status}</td>
+        </tr>
+    ))}

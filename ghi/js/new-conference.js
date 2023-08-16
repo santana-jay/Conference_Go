@@ -6,14 +6,15 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         if(response.ok){
             const data = await response.json()
+
             const selectTag = document.getElementById('location')
 
-            for(let i in data.locations){
-                const location = data.locations[i]
+            for(let location of data.locations){
+                console.log(data.locations)
                 const option = document.createElement('option')
                 option.value = location.id
                 option.innerHTML = location.name
-
+                console.log(option)
                 selectTag.appendChild(option)
             }
 
@@ -21,7 +22,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             throw new Error('Error fetching locations')
         }
     }catch(e){
-        console.log("errorrr",e)
+        console.log("errored",e)
     }
 
     const formTag = document.getElementById('create-conference-form')

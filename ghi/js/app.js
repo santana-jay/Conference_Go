@@ -4,7 +4,7 @@ function createCard(name, description, pictureUrl, startDate, endDate, location)
     const formattedEndDate = new Date(endDate).toLocaleDateString("en-US");
 
     return `
-    <div class="card shadow">
+    <div class="card shadow" style="margin-bottom: 8px; padding: 4px;">
         <img src="${pictureUrl}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
@@ -21,6 +21,7 @@ function createCard(name, description, pictureUrl, startDate, endDate, location)
 window.addEventListener('DOMContentLoaded', async () => {
 
     const url = 'http://localhost:8000/api/conferences/';
+    const columnContainer = document.querySelector('.row-cols-3');
 
     try {
         const response = await fetch(url);
@@ -31,7 +32,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         } else {
         const data = await response.json();
 
-
+        columnContainer.innerHTML = '';
 
         for (let conference of data.conferences) {
             const detailUrl = `http://localhost:8000${conference.href}`;
@@ -45,9 +46,9 @@ window.addEventListener('DOMContentLoaded', async () => {
                 const endDate = details.conference.ends
                 const location = details.conference.location.name
                 const html = createCard(title, description, pictureUrl, startDate, endDate, location);
-                // const column = document.querySelector('.row')
                 const columnContainer = document.querySelector('.row-cols-3');
-                columnContainer.innerHTML += html
+                columnContainer.innerHTML += html;
+
             }
         }
 

@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', async  () => {
 
         const formData = new FormData(formTag)
         const json = JSON.stringify(Object.fromEntries(formData))
+
         const locationUrl = 'http://localhost:8000/api/locations/'
         const fetchConfig = {
             method: 'post',
